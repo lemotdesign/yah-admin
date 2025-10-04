@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import { signIn } from 'next-auth/react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -23,6 +24,17 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
       // Redirect to dashboard for demo
       window.location.href = '/dashboard'
     }, 2000)
+  }
+
+  async function handleGitHubSignIn() {
+    setIsLoading(true)
+    try {
+      await signIn('github', { callbackUrl: '/dashboard' })
+    } catch (error) {
+      console.error('GitHub sign in failed:', error)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -73,13 +85,7 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
         variant="outline"
         type="button"
         disabled={isLoading}
-        onClick={() => {
-          setIsLoading(true)
-          setTimeout(() => {
-            setIsLoading(false)
-            alert('Auth0 integration will be configured after deployment')
-          }, 1000)
-        }}
+        onClick={handleGitHubSignIn}
         className="w-full border-gray-300 text-gray-700 hover:bg-gray-50"
       >
         {isLoading ? (
@@ -87,8 +93,17 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
         ) : (
           <Icons.gitHub className="mr-2 h-4 w-4" />
         )}
-        Continue with Auth0
+        Continue with GitHub
       </Button>
+      
+      <div className="text-center">
+        <p className="text-sm text-gray-600">
+          Don't have an account?{" "}
+          <a href="/signup" className="font-medium text-primary-600 hover:text-primary-500">
+            Sign up here
+          </a>
+        </p>
+      </div>
     </div>
   )
 }
