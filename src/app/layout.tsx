@@ -2,9 +2,15 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ErrorBoundary } from '@/components/error-boundary'
-import { Providers } from '@/components/providers'
+import { RouteProvider } from '@/providers/route-provider'
+import { ThemeProvider } from '@/providers/theme-provider'
+import { AuthProvider } from '@/providers/auth-provider'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   title: 'YAH Admin - Administrative Panel',
@@ -17,12 +23,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${inter.variable} scroll-smooth`}>
+      <body className="bg-primary antialiased">
         <ErrorBoundary>
-          <Providers>
-            {children}
-          </Providers>
+          <AuthProvider>
+            <RouteProvider>
+              <ThemeProvider>
+                {children}
+              </ThemeProvider>
+            </RouteProvider>
+          </AuthProvider>
         </ErrorBoundary>
       </body>
     </html>

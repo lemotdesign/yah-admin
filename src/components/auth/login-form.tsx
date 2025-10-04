@@ -2,10 +2,7 @@
 
 import * as React from 'react'
 import { signIn } from 'next-auth/react'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Button, Input } from '@/components/ui'
 import { Icons } from '@/components/ui/icons'
 
 interface LoginFormProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -38,34 +35,25 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
   }
 
   return (
-    <div className={cn('space-y-6', className)} {...props}>
+    <div className={`space-y-6 ${className || ''}`} {...props}>
       <form onSubmit={onSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-            Email
-          </Label>
-          <Input
-            id="email"
-            placeholder="name@example.com"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            autoCapitalize="none"
-            autoComplete="email"
-            autoCorrect="off"
-            disabled={isLoading}
-            className="w-full"
-            required
-          />
-        </div>
+        <Input
+          label="Email"
+          placeholder="name@example.com"
+          type="email"
+          value={email}
+          onChange={setEmail}
+          required
+          disabled={isLoading}
+        />
         <Button 
           type="submit" 
-          disabled={isLoading || !email}
-          className="w-full bg-primary-600 hover:bg-primary-700 text-white"
+          isDisabled={isLoading || !email}
+          fullWidth
+          color="primary"
+          variant="solid"
+          loading={isLoading}
         >
-          {isLoading && (
-            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-          )}
           Sign In with Email
         </Button>
       </form>
@@ -83,23 +71,20 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
       
       <Button
         variant="outline"
-        type="button"
-        disabled={isLoading}
-        onClick={handleGitHubSignIn}
-        className="w-full border-gray-300 text-gray-700 hover:bg-gray-50"
+        color="gray"
+        fullWidth
+        isDisabled={isLoading}
+        onPress={handleGitHubSignIn}
+        iconLeading={isLoading ? Icons.spinner : Icons.gitHub}
+        loading={isLoading}
       >
-        {isLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.gitHub className="mr-2 h-4 w-4" />
-        )}
         Continue with GitHub
       </Button>
       
       <div className="text-center">
         <p className="text-sm text-gray-600">
           Don't have an account?{" "}
-          <a href="/signup" className="font-medium text-primary-600 hover:text-primary-500">
+          <a href="/signup" className="font-medium text-brand-600 hover:text-brand-500">
             Sign up here
           </a>
         </p>

@@ -1,60 +1,53 @@
-# 🚀 YAH Admin Panel - Ready for Auth0 & Database Setup!
+# 🚀 YAH Admin Panel - Ready for GitHub OAuth & Deployment!
 
 ## ✅ What's Been Completed
 
 - ✅ **Next.js 15 Project** - Modern setup with TypeScript, App Router
-- ✅ **Tailwind CSS** - Configured with YAH Digital brand colors  
+- ✅ **Tailwind CSS v4** - Latest version with custom design system
 - ✅ **Netlify Configuration** - Ready for deployment with `netlify.toml`
-- ✅ **Auth0 Structure** - Components and routes ready for your credentials
-- ✅ **Prisma Schema** - Complete database models for your features
+- ✅ **GitHub OAuth Structure** - Authentication ready for your credentials
+- ✅ **Dashboard Pages** - Complete with Analytics, Projects, Settings, Users
 - ✅ **Development Server** - Running on http://localhost:3001
 
-## 🔧 Next Steps: Configure Your Auth0 Account
+## 🔧 Next Steps: Configure Your GitHub OAuth
 
-### 1. Auth0 Application Setup
+### 1. GitHub OAuth Application Setup
 
-1. **Go to your Auth0 Dashboard**: https://manage.auth0.com/
-2. **Create New Application**:
-   - Name: "YAH Admin Panel"  
-   - Type: "Regular Web Applications"
-   - Technology: "Next.js"
+1. **Go to GitHub Settings**: https://github.com/settings/developers
+2. **Create New OAuth App**:
+   - Application name: "YAH Admin Panel"  
+   - Homepage URL: `http://localhost:3001`
+   - Authorization callback URL: `http://localhost:3001/api/auth/callback/github`
 
-3. **Configure Application URLs**:
+3. **For Production Deployment**, add Netlify URL:
    ```
-   Allowed Callback URLs:
-   http://localhost:3001/api/auth/callback
-   https://your-netlify-app.netlify.app/api/auth/callback
-
-   Allowed Logout URLs:
-   http://localhost:3001
+   Homepage URL:
    https://your-netlify-app.netlify.app
 
-   Allowed Web Origins:
-   http://localhost:3001
-   https://your-netlify-app.netlify.app
+   Authorization callback URL:
+   https://your-netlify-app.netlify.app/api/auth/callback/github
    ```
 
 ### 2. Update Your Environment Variables
 
-Replace the values in `.env.local` with your actual Auth0 credentials:
+Replace the values in `.env.local` with your GitHub OAuth credentials:
 
 ```env
-# Replace these with your Auth0 values
-AUTH0_SECRET=your-long-random-string-32-chars-minimum
-AUTH0_BASE_URL=http://localhost:3001
-AUTH0_ISSUER_BASE_URL=https://your-domain.auth0.com
-AUTH0_CLIENT_ID=your-client-id-from-auth0
-AUTH0_CLIENT_SECRET=your-client-secret-from-auth0
+# Replace these with your GitHub OAuth values
+NEXTAUTH_URL=http://localhost:3001
+NEXTAUTH_SECRET=your-long-random-string-32-chars-minimum
+GITHUB_ID=your-github-client-id
+GITHUB_SECRET=your-github-client-secret
 ```
 
-**To generate AUTH0_SECRET**, run this command:
+**To generate NEXTAUTH_SECRET**, run this command:
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-## 🗄️ Database Setup Options for Netlify
+## 🗄️ Optional Database Setup for Production
 
-Choose one of these cloud database providers:
+For production deployment, choose one of these cloud database providers:
 
 ### Option 1: Supabase (Recommended for beginners)
 - **Free tier**: 500MB storage
@@ -91,16 +84,16 @@ npm run db:studio
 
 ## 🚀 Testing Your Setup
 
-1. **Test Auth0**: Visit http://localhost:3001 and try logging in
-2. **Test Database**: Run `npm run db:studio` to view your database
+1. **Test GitHub OAuth**: Visit http://localhost:3001 and try logging in
+2. **Test Dashboard**: Navigate through Analytics, Projects, Settings, Users pages
 3. **Test Build**: Run `npm run build` to ensure everything compiles
 
 ## 📋 Netlify Deployment Checklist
 
-- [ ] Set Auth0 environment variables in Netlify dashboard
-- [ ] Set DATABASE_URL in Netlify environment variables  
-- [ ] Update AUTH0_BASE_URL to your Netlify domain
-- [ ] Add your Netlify domain to Auth0 allowed URLs
+- [ ] Set GitHub OAuth environment variables in Netlify dashboard
+- [ ] Optional: Set DATABASE_URL in Netlify environment variables  
+- [ ] Update NEXTAUTH_URL to your Netlify domain
+- [ ] Add your Netlify domain to GitHub OAuth allowed URLs
 - [ ] Test production deployment
 
 ## 🛠️ File Structure Overview

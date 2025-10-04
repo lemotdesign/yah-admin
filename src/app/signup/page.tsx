@@ -4,8 +4,8 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen flex">
       {/* Left side - Branding (hidden on mobile) */}
-      <div className="hidden lg:flex lg:w-1/2 bg-primary-600 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-800" />
+      <div className="hidden lg:flex lg:w-1/2 bg-brand-600 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-600 to-brand-800" />
         <div className="relative z-10 flex flex-col justify-between p-12 text-white">
           <div className="flex items-center text-xl font-bold">
             <svg
@@ -36,7 +36,7 @@ export default function SignupPage() {
         <div className="w-full max-w-md space-y-8">
           {/* Mobile branding */}
           <div className="lg:hidden text-center">
-            <div className="flex items-center justify-center text-2xl font-bold text-primary-600 mb-2">
+            <div className="flex items-center justify-center text-2xl font-bold text-brand-600 mb-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -67,7 +67,7 @@ export default function SignupPage() {
             <div className="text-center">
               <p className="text-sm text-gray-600">
                 Already have an account?{" "}
-                <a href="/login" className="font-medium text-primary-600 hover:text-primary-500">
+                <a href="/login" className="font-medium text-brand-600 hover:text-brand-500">
                   Sign in here
                 </a>
               </p>
@@ -75,7 +75,7 @@ export default function SignupPage() {
             
             <p className="text-center text-xs text-gray-500">
               By creating an account, you agree to our{" "}
-              <a href="/terms" className="underline hover:text-primary-600">
+              <a href="/terms" className="underline hover:text-brand-600">
                 Terms of Service
               </a>{" "}
               and{" "}

@@ -1,15 +1,20 @@
+'use client'
+
+import { Button } from "@/components/ui";
+
 export default function DashboardPage() {
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
         <div className="flex items-center space-x-2">
-          <a
-            href="/login"
-            className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+          <Button 
+            variant="outline" 
+            color="gray"
+            onPress={() => window.location.href = "/login"}
           >
             Back to Login
-          </a>
+          </Button>
         </div>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -90,16 +95,31 @@ export default function DashboardPage() {
         <div className="col-span-3 rounded-xl border bg-card text-card-foreground shadow">
           <div className="p-6">
             <h3 className="text-lg font-semibold">Quick Actions</h3>
-            <div className="mt-4 space-y-2">
-              <button className="w-full text-left p-2 hover:bg-accent rounded-md">
+            <div className="mt-4 space-y-3">
+              <Button 
+                fullWidth 
+                variant="solid" 
+                color="primary"
+                onPress={() => console.log("Create new guide")}
+              >
                 Create new guide
-              </button>
-              <button className="w-full text-left p-2 hover:bg-accent rounded-md">
+              </Button>
+              <Button 
+                fullWidth 
+                variant="outline" 
+                color="secondary"
+                onPress={() => console.log("View billing reports")}
+              >
                 View billing reports
-              </button>
-              <button className="w-full text-left p-2 hover:bg-accent rounded-md">
+              </Button>
+              <Button 
+                fullWidth 
+                variant="ghost" 
+                color="gray"
+                onPress={() => console.log("Export user data")}
+              >
                 Export user data
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -109,7 +129,7 @@ export default function DashboardPage() {
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <p className="text-blue-800">
           <strong>Demo Dashboard:</strong> This is a static demonstration of the YAH Admin interface. 
-          All data shown is placeholder content. Auth0 authentication and database integration will be configured after deployment.
+          All data shown is placeholder content. GitHub OAuth authentication and database integration will be configured after deployment.
         </p>
       </div>
     </div>
