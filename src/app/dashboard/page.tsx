@@ -3,6 +3,14 @@ export default function DashboardPage() {
     <div className="flex-1 space-y-4 p-8 pt-6">
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+        <div className="flex items-center space-x-2">
+          <a
+            href="/login"
+            className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+          >
+            Back to Login
+          </a>
+        </div>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-xl border bg-card text-card-foreground shadow">
@@ -95,6 +103,14 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
+      </div>
+      
+      {/* Demo Notice */}
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <p className="text-blue-800">
+          <strong>Demo Dashboard:</strong> This is a static demonstration of the YAH Admin interface. 
+          All data shown is placeholder content. Auth0 authentication and database integration will be configured after deployment.
+        </p>
       </div>
     </div>
   )

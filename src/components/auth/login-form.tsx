@@ -11,13 +11,18 @@ interface LoginFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function LoginForm({ className, ...props }: LoginFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [email, setEmail] = React.useState<string>('')
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
     setIsLoading(true)
 
-    // Redirect to Auth0 login
-    window.location.href = '/api/auth/login'
+    // Simulate login process for demo
+    setTimeout(() => {
+      setIsLoading(false)
+      // Redirect to dashboard for demo
+      window.location.href = '/dashboard'
+    }, 2000)
   }
 
   return (
@@ -31,16 +36,19 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
             id="email"
             placeholder="name@example.com"
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             autoCapitalize="none"
             autoComplete="email"
             autoCorrect="off"
             disabled={isLoading}
             className="w-full"
+            required
           />
         </div>
         <Button 
           type="submit" 
-          disabled={isLoading}
+          disabled={isLoading || !email}
           className="w-full bg-primary-600 hover:bg-primary-700 text-white"
         >
           {isLoading && (
@@ -67,7 +75,10 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
         disabled={isLoading}
         onClick={() => {
           setIsLoading(true)
-          window.location.href = '/api/auth/login'
+          setTimeout(() => {
+            setIsLoading(false)
+            alert('Auth0 integration will be configured after deployment')
+          }, 1000)
         }}
         className="w-full border-gray-300 text-gray-700 hover:bg-gray-50"
       >

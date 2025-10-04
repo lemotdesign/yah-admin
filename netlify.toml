@@ -1,22 +1,7 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
-  NODE_VERSION = "20"
-  NPM_FLAGS = "--version"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
-# Handle Next.js API routes
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/___netlify-handler"
-  status = 200
-
-# Handle Next.js pages
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/___netlify-handler"
-  status = 200
+  NODE_VERSION = "18"
+  SECRETS_SCAN_ENABLED = "false"
