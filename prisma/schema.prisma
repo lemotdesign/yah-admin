@@ -1,0 +1,143 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication and user management
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  auth0Id   String   @unique
+  role      UserRole @default(USER)
+  tier      UserTier @default(BASIC)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  tickets       Ticket[]
+  billingInfo   BillingInfo?
+  guideAccess   GuideAccess[]
+  chatMessages  ChatMessage[]
+
+  @@map("users")
+}
+
+// User roles for access control
+enum UserRole {
+  ADMIN
+  USER
+}
+
+// User tiers for different access levels
+enum UserTier {
+  BASIC
+  PREMIUM
+  ENTERPRISE
+}
+
+// How-to guides model
+model Guide {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  category    String
+  tags        String[]
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  access GuideAccess[]
+
+  @@map("guides")
+}
+
+// Guide access control
+model GuideAccess {
+  id      String   @id @default(cuid())
+  userId  String
+  guideId String
+  tier    UserTier
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guide Guide @relation(fields: [guideId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, guideId])
+  @@map("guide_access")
+}
+
+// Support tickets model
+model Ticket {
+  id          String       @id @default(cuid())
+  title       String
+  description String
+  status      TicketStatus @default(OPEN)
+  priority    Priority     @default(MEDIUM)
+  category    String
+  userId      String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("tickets")
+}
+
+// Ticket status enum
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+// Priority enum
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+// Billing information model
+model BillingInfo {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  subscriptionId  String?
+  plan            String?
+  amount          Decimal?
+  currency        String   @default("USD")
+  billingCycle    String?
+  nextBillingDate DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("billing_info")
+}
+
+// Chat messages for Slack integration
+model ChatMessage {
+  id        String   @id @default(cuid())
+  content   String
+  userId    String
+  channel   String
+  slackTs   String?  // Slack timestamp
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("chat_messages")
+}

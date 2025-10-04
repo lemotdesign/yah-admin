@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Environment variables (sensitive data)
+.env.local
+.env
+
+# Next.js build output
+.next/
+out/
+
+# Vercel deployment files
+.vercel
+
+# Prisma generated files
+/generated/prisma
+
+# Development files
+*.log
+npm-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
