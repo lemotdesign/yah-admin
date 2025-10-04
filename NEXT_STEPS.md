@@ -103,31 +103,31 @@ yah-admin/
 ├── src/app/
 │   ├── login/page.tsx          # Login page with YAH branding
 │   ├── dashboard/              # Protected admin area
-│   └── api/auth/[auth0]/       # Auth0 API routes
-├── prisma/schema.prisma        # Complete database schema
-├── netlify.toml               # Netlify deployment config
-├── AUTH0_SETUP.md             # Detailed Auth0 guide
-└── PRISMA_NETLIFY_SETUP.md    # Database setup guide
+│   └── api/auth/[...nextauth]/ # NextAuth.js API routes
+├── middleware.ts              # Route protection
+├── netlify.toml              # Netlify deployment config
+├── GITHUB_OAUTH_SETUP.md     # GitHub OAuth setup guide
+└── NETLIFY_DEPLOYMENT.md     # Deployment guide
 ```
 
 ## 🎯 What You Get After Setup
 
-- **Secure Authentication** - Auth0-powered login/logout
-- **User Management** - Role-based access control
-- **Database Ready** - PostgreSQL with Prisma ORM
+- **Secure Authentication** - GitHub OAuth via NextAuth.js
+- **User Management** - Dashboard with user roles
+- **Component Library** - Custom Button, Input, Avatar components
 - **Production Ready** - Optimized for Netlify deployment
 - **YAH Branded** - Professional design matching your brand
 
 ## 📞 Need Help?
 
-- **Auth0 Issues**: Check AUTH0_SETUP.md for detailed troubleshooting
-- **Database Issues**: See PRISMA_NETLIFY_SETUP.md for provider-specific guides
+- **GitHub OAuth Issues**: Check GITHUB_OAUTH_SETUP.md for troubleshooting
+- **Deployment Issues**: See NETLIFY_DEPLOYMENT.md for step-by-step guide
 - **Build Errors**: Ensure all environment variables are set correctly
 
 ---
 
 **You're almost there! 🎉**
 
-The foundation is solid. Just configure Auth0 and choose your database provider, then you'll have a fully functional admin panel ready for your team! 
+The foundation is solid. Just configure GitHub OAuth and optional database, then you'll have a fully functional admin panel ready for your team! 
 
 Your next major milestone will be building the how-to guides feature and billing dashboard.

@@ -21,7 +21,7 @@ git status
 git add .
 
 # Commit changes
-git commit -m "feat: Initial YAH Admin Panel with Auth0 integration ready"
+git commit -m "feat: Initial YAH Admin Panel with GitHub OAuth integration ready"
 
 # Push to GitHub
 git push origin main
@@ -48,42 +48,36 @@ git push origin main
 In Netlify dashboard → **Site settings** → **Environment variables**:
 
 ```env
-AUTH0_SECRET=generate-a-32-char-random-string
-AUTH0_BASE_URL=https://your-app-name.netlify.app
-AUTH0_ISSUER_BASE_URL=https://your-domain.auth0.com
-AUTH0_CLIENT_ID=your-auth0-client-id
-AUTH0_CLIENT_SECRET=your-auth0-client-secret
+NEXTAUTH_URL=https://your-app-name.netlify.app
+NEXTAUTH_SECRET=generate-a-32-char-random-string
+GITHUB_CLIENT_ID=your-github-client-id
+GITHUB_CLIENT_SECRET=your-github-client-secret
 ```
 
-**Generate AUTH0_SECRET:**
+**Generate NEXTAUTH_SECRET:**
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-### 5. Configure Auth0 Application
+### 5. Configure GitHub OAuth Application
 
-In your Auth0 dashboard:
+In your GitHub OAuth App settings:
 
-**Allowed Callback URLs:**
+**Homepage URL:**
 ```
-http://localhost:3004/api/auth/callback,https://your-app-name.netlify.app/api/auth/callback
-```
-
-**Allowed Logout URLs:**
-```
-http://localhost:3004,https://your-app-name.netlify.app
+https://your-app-name.netlify.app
 ```
 
-**Allowed Web Origins:**
+**Authorization callback URL:**
 ```
-http://localhost:3004,https://your-app-name.netlify.app
+https://your-app-name.netlify.app/api/auth/callback/github
 ```
 
 ### 6. Test Deployment
 
 - [ ] Visit your Netlify URL
 - [ ] Check login page loads
-- [ ] Test Auth0 login flow
+- [ ] Test GitHub OAuth login flow
 - [ ] Verify redirects work
 
 ## Troubleshooting
@@ -93,10 +87,10 @@ http://localhost:3004,https://your-app-name.netlify.app
 - Ensure all dependencies are in package.json
 - Verify environment variables are set
 
-**Auth0 Login Fails?**
-- Double-check callback URLs
-- Verify environment variables
-- Check Auth0 application settings
+**GitHub OAuth Login Fails?**
+- Double-check callback URLs in GitHub settings
+- Verify environment variables in Netlify
+- Check GitHub OAuth application configuration
 
 **Styles Not Loading?**
 - Ensure Tailwind CSS is building properly

@@ -9,8 +9,8 @@ This project uses NextAuth.js with GitHub OAuth for authentication. Follow these
 2. Click "New OAuth App"
 3. Fill in the application details:
    - **Application name**: YAH Admin (or your preferred name)
-   - **Homepage URL**: `http://localhost:3004` (development) or your production URL
-   - **Authorization callback URL**: `http://localhost:3004/api/auth/callback/github`
+   - **Homepage URL**: `http://localhost:3001` (development) or your production URL
+   - **Authorization callback URL**: `http://localhost:3001/api/auth/callback/github`
 4. Click "Register application"
 
 ## Step 2: Get Your Credentials
@@ -25,7 +25,7 @@ Update your `.env.local` file with the GitHub OAuth credentials:
 
 ```bash
 # NextAuth Configuration
-NEXTAUTH_URL=http://localhost:3004
+NEXTAUTH_URL=http://localhost:3001
 NEXTAUTH_SECRET=your-nextauth-secret-key-here-32-chars-minimum
 
 # GitHub OAuth Configuration
@@ -45,7 +45,7 @@ Or use this online generator: https://generate-secret.vercel.app/32
 ## Step 5: Testing
 
 1. Start your development server: `npm run dev`
-2. Navigate to `http://localhost:3004/login`
+2. Navigate to `http://localhost:3001/login`
 3. Click "Continue with GitHub"
 4. You should be redirected to GitHub for authorization
 5. After authorization, you'll be redirected back to the dashboard
