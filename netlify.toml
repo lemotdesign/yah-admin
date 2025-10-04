@@ -3,13 +3,11 @@
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--version"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-[functions]
-  node_bundler = "esbuild"
 
 # Handle Next.js API routes
 [[redirects]]
