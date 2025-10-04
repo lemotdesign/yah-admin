@@ -8,10 +8,10 @@ import { Icons } from '@/components/ui/icons'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: 'home' },
-  { name: 'Users', href: '/users', icon: 'users' },
-  { name: 'Projects', href: '/projects', icon: 'folder' },
-  { name: 'Analytics', href: '/analytics', icon: 'chart' },
-  { name: 'Settings', href: '/settings', icon: 'settings' },
+  { name: 'Users', href: '/dashboard/users', icon: 'users' },
+  { name: 'Projects', href: '/dashboard/projects', icon: 'folder' },
+  { name: 'Analytics', href: '/dashboard/analytics', icon: 'chart' },
+  { name: 'Settings', href: '/dashboard/settings', icon: 'settings' },
 ]
 
 export function DashboardNav() {
