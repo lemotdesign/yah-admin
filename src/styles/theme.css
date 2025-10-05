@@ -1,4 +1,4 @@
-@theme {
+:root {
     /* FONT FAMILY */
     --font-body: var(--font-inter, "Inter"), -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     --font-display: var(--font-inter, "Inter"), -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -162,49 +162,48 @@
     --color-bg-success-solid: var(--color-success-600);
 }
 
-@layer base {
-    /* DARK MODE VARIABLES */
-    .dark-mode {
-        --color-text-primary: var(--color-gray-50);
-        --color-text-secondary: var(--color-gray-300);
-        --color-text-tertiary: var(--color-gray-400);
-        --color-text-quaternary: var(--color-gray-400);
-        --color-text-disabled: var(--color-gray-500);
-        --color-text-placeholder: var(--color-gray-500);
-        --color-text-brand-primary: var(--color-gray-50);
-        --color-text-brand-secondary: var(--color-gray-300);
-        --color-text-brand-tertiary: var(--color-gray-400);
-        --color-text-error-primary: var(--color-error-400);
-        --color-text-success-primary: var(--color-success-400);
-        --color-text-white: var(--color-white);
+/* DARK MODE VARIABLES */
+.dark-mode {
+    --color-text-primary: var(--color-gray-50);
+    --color-text-secondary: var(--color-gray-300);
+    --color-text-tertiary: var(--color-gray-400);
+    --color-text-quaternary: var(--color-gray-400);
+    --color-text-disabled: var(--color-gray-500);
+    --color-text-placeholder: var(--color-gray-500);
+    --color-text-brand-primary: var(--color-gray-50);
+    --color-text-brand-secondary: var(--color-gray-300);
+    --color-text-brand-tertiary: var(--color-gray-400);
+    --color-text-error-primary: var(--color-error-400);
+    --color-text-success-primary: var(--color-success-400);
+    --color-text-white: var(--color-white);
 
-        --color-border-primary: var(--color-gray-700);
-        --color-border-secondary: var(--color-gray-800);
-        --color-border-tertiary: var(--color-gray-800);
-        --color-border-disabled: var(--color-gray-700);
-        --color-border-brand: var(--color-brand-400);
-        --color-border-error: var(--color-error-400);
+    --color-border-primary: var(--color-gray-700);
+    --color-border-secondary: var(--color-gray-800);
+    --color-border-tertiary: var(--color-gray-800);
+    --color-border-disabled: var(--color-gray-700);
+    --color-border-brand: var(--color-brand-400);
+    --color-border-error: var(--color-error-400);
 
-        --color-bg-primary: var(--color-gray-950);
-        --color-bg-secondary: var(--color-gray-900);
-        --color-bg-tertiary: var(--color-gray-800);
-        --color-bg-quaternary: var(--color-gray-700);
-        --color-bg-active: var(--color-gray-800);
-        --color-bg-disabled: var(--color-gray-800);
-        --color-bg-overlay: var(--color-gray-800);
-        --color-bg-brand-primary: var(--color-brand-500);
-        --color-bg-brand-secondary: var(--color-brand-600);
-        --color-bg-brand-solid: var(--color-brand-600);
-        --color-bg-error-primary: var(--color-error-950);
-        --color-bg-error-secondary: var(--color-error-600);
-        --color-bg-error-solid: var(--color-error-600);
-        --color-bg-success-primary: var(--color-success-950);
-        --color-bg-success-secondary: var(--color-success-600);
-        --color-bg-success-solid: var(--color-success-600);
-    }
+    --color-bg-primary: var(--color-gray-950);
+    --color-bg-secondary: var(--color-gray-900);
+    --color-bg-tertiary: var(--color-gray-800);
+    --color-bg-quaternary: var(--color-gray-700);
+    --color-bg-active: var(--color-gray-800);
+    --color-bg-disabled: var(--color-gray-800);
+    --color-bg-overlay: var(--color-gray-800);
+    --color-bg-brand-primary: var(--color-brand-500);
+    --color-bg-brand-secondary: var(--color-brand-600);
+    --color-bg-brand-solid: var(--color-brand-600);
+    --color-bg-error-primary: var(--color-error-950);
+    --color-bg-error-secondary: var(--color-error-600);
+    --color-bg-error-solid: var(--color-error-600);
+    --color-bg-success-primary: var(--color-success-950);
+    --color-bg-success-secondary: var(--color-success-600);
+    --color-bg-success-solid: var(--color-success-600);
 }
 
-@utility scrollbar-hide {
+/* Utility classes for scrollbar hiding */
+.scrollbar-hide {
     /* For Webkit-based browsers (Chrome, Safari and Opera) */
     &::-webkit-scrollbar {
         display: none;
@@ -216,7 +215,7 @@
     scrollbar-width: none; /* Firefox */
 }
 
-@utility transition-inherit-all {
+.transition-inherit-all {
     transition-property: inherit;
     transition-duration: inherit;
     transition-timing-function: inherit;

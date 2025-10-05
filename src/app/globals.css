@@ -1,12 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "../styles/theme.css";
-
-@plugin "tailwindcss-animate";
-@plugin "tailwindcss-react-aria-components";
-
-@custom-variant dark (&:where(.dark-mode, .dark-mode *));
-@custom-variant label (& [data-label]);
-@custom-variant focus-input-within (&:has(input:focus));
 
 @layer base {
   :root {

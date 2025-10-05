@@ -12,14 +12,13 @@ const handler = NextAuth({
     signIn: '/login',
   },
   callbacks: {
-    async jwt({ token, account }) {
+    async jwt({ token, account }: any) {
       if (account) {
         token.accessToken = account.access_token
       }
       return token
     },
-    async session({ session, token }) {
-      // @ts-ignore
+    async session({ session, token }: any) {
       session.accessToken = token.accessToken
       return session
     },
