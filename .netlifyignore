@@ -1,0 +1,16 @@
+# Netlify build exclusions
+node_modules/
+.env
+.env.local
+.git/
+*.log
+.DS_Store
+.vscode/
+.idea/
+
+# Source files not needed for build
+src/
+README.md
+tsconfig.json
+tailwind.config.js
+postcss.config.js
